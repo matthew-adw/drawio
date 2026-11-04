@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net">
   <diagram name="Page-1" id="dLJdWPRPvohYPNadgGUs">
-    <mxGraphModel dx="1178" dy="619" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1911" dy="1004" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -54,6 +54,9 @@
         </mxCell>
         <mxCell id="6xhOgUXmBeDggfyYtSyj-16" parent="1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;" value="&lt;div class=&quot;box-title&quot; style=&quot;margin: 0px 0px 4px; padding: 0px; box-sizing: border-box; font-weight: 700; font-size: 15px; color: color(srgb 0.901961 0.929412 0.952941 / 0.94); font-family: system-ui, -apple-system, sans-serif;&quot;&gt;Daily Report Output&lt;/div&gt;&lt;div class=&quot;box-sub&quot; style=&quot;margin: 0px; padding: 0px; box-sizing: border-box; color: color(srgb 0.901961 0.929412 0.952941 / 0.54); font-family: system-ui, -apple-system, sans-serif;&quot;&gt;Per-market narrative with root cause analysis&lt;/div&gt;&lt;div class=&quot;box-small&quot; style=&quot;margin: 4px 0px 0px; padding: 0px; box-sizing: border-box; font-size: 11px; color: color(srgb 0.901961 0.929412 0.952941 / 0.54); font-family: system-ui, -apple-system, sans-serif;&quot;&gt;Status Key: 🔴 New · 🟣 Systemic · 🟠 Ongoing · 🟡 Watch · ✅ Normal&lt;/div&gt;&lt;div class=&quot;box-small&quot; style=&quot;margin: 4px 0px 0px; padding: 0px; box-sizing: border-box; font-size: 11px; color: color(srgb 0.901961 0.929412 0.952941 / 0.54); font-family: system-ui, -apple-system, sans-serif;&quot;&gt;13 markets analyzed independently → Telegram/Chat delivery at 9am&lt;/div&gt;" vertex="1">
           <mxGeometry height="90" width="370" x="250" y="890" as="geometry" />
+        </mxCell>
+        <mxCell id="IUqP5UtsKtLG83-WspX4-1" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="dsa" vertex="1">
+          <mxGeometry height="30" width="60" x="670" y="160" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
