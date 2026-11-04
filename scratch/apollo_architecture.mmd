@@ -1,0 +1,49 @@
+flowchart TD
+    A["🏛️ APOLLO PROJECT\nAutonomous iGaming Metrics Analyst"] --> B
+    
+    B["Hermes Agent\nRuntime / Brain / Orchestrator"]
+    
+    B --> C["Cloud AI Model\nreflection/beam-1.0-501b-a23b:free\n(Nous Provider)"]
+    B --> D["⏰ Scheduler\nCron - Daily 9am MYT"]
+    B --> E["Snowflake DB\nPROD_ALPHATEL.MART"]
+    B --> F["Notification\nTelegram / Chat"]
+    
+    B --> G["Skills - Metric Analyzers"]
+    
+    G --> H["NGR Analyst ✅ BUILT"]
+    G --> I["Deposits Analyst\n(not built yet)"]
+    G --> J["Actives Analyst\n(not built yet)"]
+    G --> K["FTDs Analyst\n(not built yet)"]
+    
+    H --> H1["1. Query 90-day daily NGR\nper market (13 markets)"]
+    H1 --> H2["2. Fit baseline\n(IQR + Z-score + MAD)"]
+    H2 --> H3{"3. Is today an anomaly?\n(IQR outlier OR |z| > 1.5)"}
+    H3 -->|NO| H4["✅ Output: Normal"]
+    H3 -->|YES| H5["Drill down"]
+    H5 --> H6["5a. Split by VIP tier\n→ which tier moved?"]
+    H5 --> H7["5b. Split by provider\n→ which provider?"]
+    H5 --> H8["5c. Check promos\n→ bonus abuse?"]
+    H5 --> H9["5d. Check incentives\n→ I/G, I/D ratios"]
+    H5 --> H10["5e. Check product mix\n→ Sports vs Slots"]
+    H6 --> H11["6. Generate narrative\n→ Telegram/Chat"]
+    H7 --> H11
+    H8 --> H11
+    H9 --> H11
+    H10 --> H11
+    
+    H11 --> F
+    
+    style A fill:#4a9eff,color:#fff
+    style B fill:#4a9eff,color:#fff
+    style C fill:#9c27b0,color:#fff
+    style D fill:#ff9800,color:#fff
+    style E fill:#4caf50,color:#fff
+    style F fill:#9c27b0,color:#fff
+    style G fill:#4a9eff,color:#fff
+    style H fill:#4caf50,color:#fff
+    style I fill:#555,color:#aaa,stroke-dasharray: 5 5
+    style J fill:#555,color:#aaa,stroke-dasharray: 5 5
+    style K fill:#555,color:#aaa,stroke-dasharray: 5 5
+    style H4 fill:#4caf50,color:#fff
+    style H5 fill:#ff9800,color:#fff
+    style H11 fill:#9c27b0,color:#fff

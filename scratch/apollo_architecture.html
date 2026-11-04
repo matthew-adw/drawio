@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apollo Architecture</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: system-ui, -apple-system, sans-serif;
+    background: transparent;
+    color: var(--foreground, #e0e0e0);
+    padding: 16px;
+    min-height: 100vh;
+  }
+  .container { max-width: 900px; margin: 0 auto; }
+  h1 { text-align: center; font-size: 22px; margin-bottom: 4px; color: var(--accent, #4a9eff); }
+  .subtitle { text-align: center; font-size: 13px; color: var(--muted-foreground, #888); margin-bottom: 24px; }
+  
+  /* Flowchart blocks */
+  .box {
+    border: 2px solid var(--border, #444);
+    border-radius: 10px;
+    padding: 12px 16px;
+    text-align: center;
+    background: var(--card, #1a1a2e);
+    position: relative;
+    font-size: 14px;
+  }
+  .box-title { font-weight: 700; font-size: 15px; margin-bottom: 4px; }
+  .box-sub { font-size: 12px; color: var(--muted-foreground, #888); }
+  .box-small { font-size: 11px; color: var(--muted-foreground, #888); margin-top: 4px; }
+  
+  .box-accent { border-color: var(--accent, #4a9eff); }
+  .box-green { border-color: #4caf50; }
+  .box-orange { border-color: #ff9800; }
+  .box-purple { border-color: #9c27b0; }
+  .box-grey { border-color: #666; opacity: 0.6; }
+  .box-red { border-color: #f44336; }
+  
+  .arrow { text-align: center; font-size: 24px; color: var(--muted-foreground, #888); line-height: 1; margin: 6px 0; }
+  .arrow-h { display: inline-block; margin: 0 8px; }
+  
+  /* Layout */
+  .row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; align-items: flex-start; }
+  .col { display: flex; flex-direction: column; align-items: center; }
+  .section { margin: 16px 0; }
+  .section-label { 
+    text-align: center; font-size: 11px; text-transform: uppercase; 
+    letter-spacing: 1.5px; color: var(--muted-foreground, #888); 
+    margin-bottom: 8px; font-weight: 600;
+  }
+  
+  /* Diamond decision */
+  .diamond {
+    width: 140px; height: 140px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--card, #1a1a2e); border: 2px solid #ff9800;
+    transform: rotate(45deg); border-radius: 6px;
+  }
+  .diamond-inner { transform: rotate(-45deg); text-align: center; font-size: 12px; max-width: 100px; }
+  
+  /* Skill box */
+  .skill-box {
+    border: 2px solid var(--accent, #4a9eff);
+    border-radius: 10px;
+    padding: 14px;
+    background: var(--card, #1a1a2e);
+    min-width: 200px;
+  }
+  .skill-title { font-weight: 700; font-size: 14px; color: var(--accent, #4a9eff); margin-bottom: 8px; }
+  .skill-step { font-size: 12px; padding: 4px 8px; margin: 4px 0; border-radius: 4px; background: rgba(255,255,255,0.05); }
+  .skill-step.decision { background: rgba(255,152,0,0.15); border-left: 3px solid #ff9800; }
+  .skill-step.action { background: rgba(76,175,80,0.1); border-left: 3px solid #4caf50; }
+  .skill-step.query { background: rgba(74,158,255,0.1); border-left: 3px solid #4a9eff; }
+  .skill-step.output { background: rgba(156,39,176,0.1); border-left: 3px solid #9c27b0; }
+  
+  .blank-box {
+    border: 2px dashed #555;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    color: #666;
+    font-size: 13px;
+    min-width: 180px;
+    background: rgba(255,255,255,0.02);
+  }
+  
+  .connector { width: 2px; height: 20px; background: #555; margin: 0 auto; }
+  .connector-h { height: 2px; width: 40px; background: #555; display: inline-block; vertical-align: middle; }
+  
+  .flow-row { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; align-items: flex-start; margin: 8px 0; }
+  
+  .label { font-size: 10px; color: var(--muted-foreground, #888); margin-top: 2px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <h1>🏛️ APOLLO PROJECT</h1>
+  <div class="subtitle">Autonomous iGaming Metrics Analyst — Architecture</div>
+
+  <!-- Top Level -->
+  <div class="section">
+    <div class="box box-accent" style="max-width: 400px; margin: 0 auto;">
+      <div class="box-title">Hermes Agent</div>
+      <div class="box-sub">Runtime / Brain / Orchestrator</div>
+      <div class="box-small">Cloud AI: reflection/beam-1.0-501b-a23b:free (Nous)</div>
+      <div class="box-small">Same model for all skills</div>
+    </div>
+  </div>
+
+  <div class="arrow">↓</div>
+
+  <div class="flow-row">
+    <div class="box box-orange" style="min-width: 160px;">
+      <div class="box-title">⏰ Scheduler</div>
+      <div class="box-sub">Cron — Daily 9am MYT</div>
+      <div class="box-small">Triggers analysis</div>
+    </div>
+    <div class="box box-green" style="min-width: 160px;">
+      <div class="box-title">Snowflake DB</div>
+      <div class="box-sub">PROD_ALPHATEL.MART</div>
+      <div class="box-small">all_member_report · gametype · promotion · MEMBER_INFO</div>
+    </div>
+    <div class="box box-purple" style="min-width: 160px;">
+      <div class="box-title">Notification</div>
+      <div class="box-sub">Telegram / Chat</div>
+      <div class="box-small">Daily report delivery</div>
+    </div>
+  </div>
+
+  <div class="arrow">↓</div>
+
+  <div class="section">
+    <div class="section-label">Skills — Metric Analyzers</div>
+    <div class="flow-row">
+
+      <!-- NGR Analyst (BUILT) -->
+      <div class="skill-box">
+        <div class="skill-title">NGR Analyst ✅ BUILT</div>
+        <div class="skill-step query">1. Query 90-day daily NGR per market (13 markets)</div>
+        <div class="skill-step query">2. Query tier/provider/promo breakdown</div>
+        <div class="arrow" style="font-size:14px; margin:2px 0;">↓</div>
+        <div class="skill-step decision">3. Fit baseline (IQR + Z-score + MAD)</div>
+        <div class="skill-step decision">4. Is today an anomaly? (IQR outlier OR |z| > 1.5)</div>
+        <div class="arrow" style="font-size:14px; margin:2px 0;">↓</div>
+        <div class="flow-row" style="gap: 8px; margin: 4px 0;">
+          <div class="skill-step action" style="flex:1; min-width:80px;">NO → ✅ Normal</div>
+          <div class="skill-step action" style="flex:1; min-width:80px;">YES → Drill down</div>
+        </div>
+        <div class="arrow" style="font-size:14px; margin:2px 0;">↓ (if anomaly)</div>
+        <div class="skill-step query">5a. Split by VIP tier → which tier moved?</div>
+        <div class="skill-step query">5b. Split by provider → which provider?</div>
+        <div class="skill-step query">5c. Check promos → bonus abuse?</div>
+        <div class="skill-step query">5d. Check incentives → I/G, I/D ratios</div>
+        <div class="skill-step query">5e. Check product mix → Sports vs Slots</div>
+        <div class="arrow" style="font-size:14px; margin:2px 0;">↓</div>
+        <div class="skill-step output">6. Generate narrative → Telegram/Chat</div>
+      </div>
+
+      <!-- Deposits (blank) -->
+      <div class="blank-box">
+        <div style="font-weight:700; margin-bottom:8px;">Deposits Analyst</div>
+        <div style="font-size:12px;">(not built yet)</div>
+        <div style="margin-top:12px; font-size:11px; color:#555;">
+          Placeholder for future skill
+        </div>
+      </div>
+
+      <!-- Actives (blank) -->
+      <div class="blank-box">
+        <div style="font-weight:700; margin-bottom:8px;">Actives Analyst</div>
+        <div style="font-size:12px;">(not built yet)</div>
+        <div style="margin-top:12px; font-size:11px; color:#555;">
+          Placeholder for future skill
+        </div>
+      </div>
+
+      <!-- FTDs (blank) -->
+      <div class="blank-box">
+        <div style="font-weight:700; margin-bottom:8px;">FTDs Analyst</div>
+        <div style="font-size:12px;">(not built yet)</div>
+        <div style="margin-top:12px; font-size:11px; color:#555;">
+          Placeholder for future skill
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="arrow">↓</div>
+
+  <div class="section">
+    <div class="box box-green" style="max-width: 600px; margin: 0 auto;">
+      <div class="box-title">Daily Report Output</div>
+      <div class="box-sub">Per-market narrative with root cause analysis</div>
+      <div class="box-small">
+        Status Key: 🔴 New · 🟣 Systemic · 🟠 Ongoing · 🟡 Watch · ✅ Normal
+      </div>
+      <div class="box-small">
+        13 markets analyzed independently → Telegram/Chat delivery at 9am
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 24px; padding: 12px; border: 1px solid #333; border-radius: 8px; background: rgba(255,255,255,0.03);">
+    <div style="font-size: 12px; color: #888; text-align: center;">
+      <strong>Legend:</strong>&nbsp;&nbsp;
+      <span style="color:#4a9eff;">■</span> Hermes Agent &nbsp;·&nbsp;
+      <span style="color:#4caf50;">■</span> Data/Storage &nbsp;·&nbsp;
+      <span style="color:#ff9800;">■</span> Scheduler/Trigger &nbsp;·&nbsp;
+      <span style="color:#9c27b0;">■</span> Output/Delivery &nbsp;·&nbsp;
+      <span style="color:#666;">■</span> Not yet built
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
